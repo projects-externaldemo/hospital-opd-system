@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miplus - Healthcare Landing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #2f7fd3;
+      --brand-dark: #0f274f;
+      --text-dark: #1f2a37;
+      --muted: #6b7280;
+      --bg-soft: #eef4fa;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text-dark);
+      background: #ffffff;
+    }
+
+    .top-bar {
+      font-size: 0.85rem;
+      color: #64748b;
+      border-bottom: 1px solid #edf2f7;
+      background: #ffffff;
+    }
+
+    .top-bar a {
+      color: #64748b;
+      text-decoration: none;
+    }
+
+    .navbar-brand {
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .navbar-brand:hover {
+      color: var(--brand);
+    }
+
+    .nav-link {
+      color: #334155;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 1rem 1.1rem !important;
+    }
+
+    .nav-link.active {
+      color: var(--brand);
+      border-bottom: 2px solid var(--brand);
+    }
+
+    .btn-brand {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 0.45rem;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .btn-brand:hover {
+      background: #236cb9;
+      border-color: #236cb9;
+      color: #ffffff;
+    }
+
+    .hero-wrap {
+      background: var(--bg-soft);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #eef4fa 45%, rgba(47, 127, 211, 0.06) 100%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      min-height: 530px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 2.7vw, 3rem);
+      line-height: 1.2;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      max-width: 560px;
+    }
+
+    .hero-title .highlight {
+      color: var(--brand);
+    }
+
+    .hero-desc {
+      color: #4b5563;
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .btn-dark-blue {
+      background: #1e2a50;
+      color: #ffffff;
+      border: 1px solid #1e2a50;
+      font-weight: 600;
+      border-radius: 0.45rem;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .btn-dark-blue:hover {
+      background: #18213f;
+      color: #ffffff;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 520px;
+      margin-left: auto;
+      border-radius: 0.35rem;
+      object-fit: cover;
+    }
+
+    .hero-carousel {
+      position: relative;
+    }
+
+    .hero-carousel .carousel-control-prev,
+    .hero-carousel .carousel-control-next {
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      opacity: 1;
+      z-index: 4;
+    }
+
+    .hero-carousel .carousel-control-prev {
+      left: 0.75rem;
+    }
+
+    .hero-carousel .carousel-control-next {
+      right: 0.75rem;
+    }
+
+    .hero-carousel .carousel-control-prev-icon,
+    .hero-carousel .carousel-control-next-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(15, 39, 79, 0.18);
+      font-size: 1.35rem;
+      background-image: none;
+    }
+
+    .hero-carousel .carousel-indicators {
+      margin-bottom: 0.5rem;
+      z-index: 4;
+    }
+
+    .hero-carousel .carousel-indicators [data-bs-target] {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--brand);
+      opacity: 0.35;
+    }
+
+    .hero-carousel .carousel-indicators .active {
+      opacity: 1;
+    }
+
+    .info-cards {
+      margin-top: -88px;
+      position: relative;
+      z-index: 3;
+      padding-bottom: 4rem;
+    }
+
+    .info-card {
+      background: var(--brand);
+      color: #ffffff;
+      border-radius: 0.35rem;
+      padding: 1.6rem 1.5rem 1.3rem;
+      box-shadow: 0 12px 22px rgba(16, 43, 79, 0.18);
+      min-height: 224px;
+    }
+
+    .info-card .label {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card .title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .info-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      font-size: 0.85rem;
+    }
+
+    .hours-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.1rem;
+      font-size: 0.92rem;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.45rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .hero-content {
+        min-height: auto;
+        padding: 3rem 0;
+      }
+
+      .hero-image {
+        margin: 2rem auto 0;
+      }
+
+      .hero-carousel .carousel-control-prev,
+      .hero-carousel .carousel-control-next {
+        display: none;
+      }
+
+      .info-cards {
+        margin-top: 1.25rem;
+      }
+    }
+
+    .spa-section {
+      padding: 3rem 0 4rem;
+      min-height: 50vh;
+    }
+
+    .spa-section h1,
+    .spa-section h2 {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .section-title-navy {
+      color: #1e2a50;
+      font-weight: 700;
+      font-size: clamp(1.85rem, 2.5vw, 2.35rem);
+    }
+
+    .section-sub {
+      color: #6c757d;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .tile-card {
+      border: none;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 22px rgba(15, 39, 79, 0.09);
+      overflow: hidden;
+      height: 100%;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .tile-card:hover {
+      box-shadow: 0 10px 28px rgba(15, 39, 79, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .tile-card .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .tile-card .card-body {
+      padding: 1.25rem 1.35rem 1.4rem;
+    }
+
+    .tile-card .card-title {
+      color: #1e2a50;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .tile-card .card-text {
+      color: #6c757d;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .whatsapp-fab {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1080;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .whatsapp-fab:hover {
+      color: #ffffff;
+      transform: scale(1.06);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.55);
+    }
+
+    .whatsapp-fab svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar py-2">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div class="d-flex align-items-center gap-3">
+        <a href="#"><span class="me-1">&#9742;</span> +800 1111 11 111</a>
+        <a href="#"><span class="me-1">&#9993;</span> support@yourmail.com</a>
+      </div>
+      <a href="#" class="text-md-end">admin login</a>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-white py-2 border-bottom border-light-subtle">
+    <div class="container">
+      <a class="navbar-brand fs-3 spa-nav-brand" href="#home" data-spa="home">&#9765; Miplus</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link spa-nav active" href="#home" data-spa="home">Home</a></li>
+          <li class="nav-item"><a class="nav-link spa-nav" href="#about-dr-john" data-spa="about-dr-john">About Dr.John</a></li>
+          <li class="nav-item"><a class="nav-link spa-nav" href="#treatments" data-spa="treatments">Treatments</a></li>
+          <li class="nav-item"><a class="nav-link spa-nav" href="#diseases" data-spa="diseases">Diseases</a></li>
+          <li class="nav-item"><a class="nav-link spa-nav" href="#services" data-spa="services">Services</a></li>
+          <li class="nav-item"><a class="nav-link spa-nav" href="#contact-us" data-spa="contact-us">Contact Us</a></li>
+        </ul>
+        <a href="#contact-us" class="btn btn-brand spa-nav-inline" data-spa="contact-us">Book Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="spa-main">
+    <div id="spa-home" class="spa-page" data-spa-id="home">
+      <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <section class="hero-wrap">
+              <div class="container hero-content">
+                <div class="row align-items-center g-4 w-100">
+                  <div class="col-lg-7">
+                    <p class="hero-kicker">We provide,</p>
+                    <h1 class="hero-title">Comprehensive <span class="highlight">Healthcare Solutions</span></h1>
+                    <p class="hero-desc">
+                      Experience the best in medical care, tailored to meet your individual needs.
+                      We are committed to your well-being.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                      <a href="#contact-us" class="btn btn-brand spa-nav-inline" data-spa="contact-us">Get Appointment</a>
+                      <a href="#about-dr-john" class="btn btn-dark-blue spa-nav-inline" data-spa="about-dr-john">Learn More</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80" class="hero-image" alt="Doctor smiling with stethoscope">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="carousel-item">
+            <section class="hero-wrap">
+              <div class="container hero-content">
+                <div class="row align-items-center g-4 w-100">
+                  <div class="col-lg-7">
+                    <p class="hero-kicker">Expert care,</p>
+                    <h1 class="hero-title">Trusted <span class="highlight">Specialists &amp; Modern Facilities</span></h1>
+                    <p class="hero-desc">
+                      Advanced diagnostics, evidence-based treatment plans, and a patient-first approach for every visit.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                      <a href="#treatments" class="btn btn-brand spa-nav-inline" data-spa="treatments">View Treatments</a>
+                      <a href="#contact-us" class="btn btn-dark-blue spa-nav-inline" data-spa="contact-us">Contact Us</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" class="hero-image" alt="Medical team in a hospital">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="carousel-item">
+            <section class="hero-wrap">
+              <div class="container hero-content">
+                <div class="row align-items-center g-4 w-100">
+                  <div class="col-lg-7">
+                    <p class="hero-kicker">Stay informed,</p>
+                    <h1 class="hero-title">Health <span class="highlight">Services &amp; Preventive Care</span></h1>
+                    <p class="hero-desc">
+                      Full-spectrum outpatient and inpatient services, diagnostics, and support—all coordinated under one roof.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                      <a href="#services" class="btn btn-brand spa-nav-inline" data-spa="services">Our Services</a>
+                      <a href="#diseases" class="btn btn-dark-blue spa-nav-inline" data-spa="diseases">Common Conditions</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" class="hero-image" alt="Doctor consulting a patient">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true">&#8249;</span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true">&#8250;</span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <section class="info-cards">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <article class="info-card">
+                <p class="label mb-1">Emergency Services</p>
+                <h2 class="title">24/7 Emergency Care</h2>
+                <p>Our emergency department is open 24/7 to provide immediate care for critical and urgent medical situations.</p>
+                <a href="#contact-us" class="info-link spa-nav-inline" data-spa="contact-us">LEARN MORE &nbsp;&#8594;</a>
+              </article>
+            </div>
+            <div class="col-lg-4">
+              <article class="info-card">
+                <p class="label mb-1">Appointments</p>
+                <h2 class="title">Doctor's Schedule</h2>
+                <p>Check our doctors' availability and schedule your appointments at a convenient time.</p>
+                <a href="#contact-us" class="info-link spa-nav-inline" data-spa="contact-us">VIEW SCHEDULE &nbsp;&#8594;</a>
+              </article>
+            </div>
+            <div class="col-lg-4">
+              <article class="info-card">
+                <p class="label mb-1">Visiting Hours</p>
+                <h2 class="title">Opening Hours</h2>
+                <ul class="hours-list">
+                  <li><span>Monday - Friday:</span><span>8:00 AM - 8:00 PM</span></li>
+                  <li><span>Saturday:</span><span>9:00 AM - 6:30 PM</span></li>
+                  <li><span>Sunday:</span><span>10:00 AM - 4:00 PM</span></li>
+                </ul>
+                <a href="#contact-us" class="info-link spa-nav-inline" data-spa="contact-us">LEARN MORE &nbsp;&#8594;</a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="spa-about-dr-john" class="spa-page d-none" data-spa-id="about-dr-john">
+      <section class="spa-section bg-light">
+        <div class="container">
+          <h1 class="mb-4">About Dr. John</h1>
+          <div class="row g-4 align-items-start">
+            <div class="col-md-4">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded shadow-sm" alt="Dr. John portrait">
+            </div>
+            <div class="col-md-8">
+              <p class="lead text-secondary">Board-certified physician with a focus on evidence-based care and clear communication.</p>
+              <p>Dr. John has spent over fifteen years helping patients manage chronic conditions and recover from acute illness. He believes in shared decision-making: you understand your options, and together you choose the path that fits your life.</p>
+              <ul class="mb-0">
+                <li>MD, Internal Medicine</li>
+                <li>Fellowship training in hospital medicine</li>
+                <li>Fluent in English and Spanish</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="spa-treatments" class="spa-page d-none" data-spa-id="treatments">
+      <section class="spa-section">
+        <div class="container">
+          <h1 class="section-title-navy text-center mb-3">Treatments</h1>
+          <p class="section-sub text-center mb-5">Evidence-based care plans tailored to you—same visual style as our diseases overview for easy browsing.</p>
+          <div class="row g-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Preventive care and wellness">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Preventive care</h2>
+                  <p class="card-text mt-2">Annual exams, screenings, vaccinations, and lifestyle counseling to stay ahead of illness.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Chronic disease management">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Chronic disease management</h2>
+                  <p class="card-text mt-2">Diabetes, hypertension, heart disease, and coordinated follow-up with your care team.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Acute illness visit">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Acute illness</h2>
+                  <p class="card-text mt-2">Same-week visits for infections, injuries, and flare-ups when capacity allows.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="spa-diseases" class="spa-page d-none" data-spa-id="diseases">
+      <section class="spa-section">
+        <div class="container">
+          <h1 class="section-title-navy text-center mb-3">Diseases We Address</h1>
+          <p class="section-sub text-center mb-5">Overview of common conditions we help evaluate and manage—always paired with individualized medical advice.</p>
+          <div class="row g-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Glucose monitoring">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Type 2 Diabetes</h2>
+                  <p class="card-text mt-2">Chronic high blood sugar managed with nutrition, activity, medications, and routine A1c monitoring.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Blood pressure and medication management">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Hypertension</h2>
+                  <p class="card-text mt-2">Elevated blood pressure that raises stroke and heart risk; treated with lifestyle steps and guided therapy.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Doctor evaluating breathing and lungs">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Asthma</h2>
+                  <p class="card-text mt-2">Reactive airways causing cough and wheeze; controlled with trigger reduction and personalized inhaler plans.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="ECG and heart monitoring">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Heart Disease</h2>
+                  <p class="card-text mt-2">Coronary and vascular conditions requiring risk-factor control, medications, and coordinated cardiology follow-up.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Outpatient mobility and follow-up care">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Arthritis</h2>
+                  <p class="card-text mt-2">Joint pain and stiffness from wear-and-tear or inflammatory disease; care focuses on mobility and pain control.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Neurology consultation">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Migraine</h2>
+                  <p class="card-text mt-2">Recurring headaches with sensitivity to light or sound; prevention and rescue plans tailored to your pattern.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Pharmacy and thyroid medications">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Thyroid Disorders</h2>
+                  <p class="card-text mt-2">Hypo- or hyperthyroid states affecting energy and metabolism; diagnosed with labs and adjusted over time.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Intensive respiratory monitoring">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">COPD</h2>
+                  <p class="card-text mt-2">Chronic lung limitation from smoking or irritants; emphasis on inhaler technique, vaccines, and flare prevention.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="spa-services" class="spa-page d-none" data-spa-id="services">
+      <section class="spa-section bg-white">
+        <div class="container">
+          <h1 class="section-title-navy text-center mb-3">Our Premium Services</h1>
+          <p class="section-sub text-center mb-5">We provide a wide range of medical services designed to meet all your healthcare needs under one roof.</p>
+          <div class="row g-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Hospital reception and waiting area">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">OPD Services</h2>
+                  <p class="card-text mt-2">Comprehensive outpatient consulting and treatment across various specializations.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="ICU bed and monitors">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">ICU</h2>
+                  <p class="card-text mt-2">Intensive care unit equipped with advanced life support systems and 24/7 monitoring.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Operating theatre">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Operation Theatre</h2>
+                  <p class="card-text mt-2">State-of-the-art operation theatres for safe and sterile surgical procedures.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="X-Ray imaging">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">X-Ray</h2>
+                  <p class="card-text mt-2">High-quality digital X-Ray imaging for quick and accurate diagnostics.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="ECG monitoring">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">ECG</h2>
+                  <p class="card-text mt-2">Electrocardiogram services for immediate heart condition assessment.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Medical laboratory and diagnostics">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Lab</h2>
+                  <p class="card-text mt-2">Fully equipped medical laboratory for comprehensive blood and pathology tests.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Medical oxygen supply">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Oxygen Supply</h2>
+                  <p class="card-text mt-2">Uninterrupted medical grade oxygen supply across triage and inpatient facilities.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+              <div class="card tile-card">
+                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Pharmacy counter">
+                <div class="card-body">
+                  <h2 class="card-title h6 mb-0">Medical Shop</h2>
+                  <p class="card-text mt-2">In-house pharmacy stocked with all essential medicines and supplies.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="spa-contact-us" class="spa-page d-none" data-spa-id="contact-us">
+      <section class="spa-section bg-light">
+        <div class="container">
+          <h1 class="mb-4">Contact Us</h1>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <form class="bg-white border rounded-3 p-4 shadow-sm" onsubmit="event.preventDefault(); alert('Demo form only—connect this to your backend.');">
+                <div class="mb-3">
+                  <label class="form-label" for="cname">Name</label>
+                  <input type="text" class="form-control" id="cname" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="cemail">Email</label>
+                  <input type="email" class="form-control" id="cemail" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="cmsg">Message</label>
+                  <textarea class="form-control" id="cmsg" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-brand">Send message</button>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <div class="bg-white border rounded-3 p-4 shadow-sm h-100">
+                <h2 class="h5 mb-3">Clinic</h2>
+                <p class="mb-2"><strong>Phone:</strong> +800 1111 11 111</p>
+                <p class="mb-2"><strong>Email:</strong> support@yourmail.com</p>
+                <p class="mb-0"><strong>Address:</strong> 123 Medical Plaza, Suite 400</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <a class="whatsapp-fab" href="https://wa.me/8801234567890?text=Hello%2C%20I%27d%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      var spaIds = ["home", "about-dr-john", "treatments", "diseases", "services", "contact-us"];
+
+      function showSpa(id) {
+        if (spaIds.indexOf(id) === -1) id = "home";
+        document.querySelectorAll(".spa-page").forEach(function (el) {
+          var match = el.getAttribute("data-spa-id") === id;
+          el.classList.toggle("d-none", !match);
+        });
+        document.querySelectorAll(".spa-nav").forEach(function (link) {
+          var active = link.getAttribute("data-spa") === id;
+          link.classList.toggle("active", active);
+        });
+        if (history.replaceState) {
+          history.replaceState(null, "", "#" + id);
+        } else {
+          location.hash = id;
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function currentHashId() {
+        var h = (location.hash || "").replace(/^#/, "");
+        if (h === "updates") h = "services";
+        return spaIds.indexOf(h) !== -1 ? h : "home";
+      }
+
+      document.querySelectorAll(".spa-nav, .spa-nav-brand").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          var id = el.getAttribute("data-spa");
+          if (!id) return;
+          e.preventDefault();
+          showSpa(id);
+          var navCollapse = document.getElementById("mainNav");
+          if (navCollapse && navCollapse.classList.contains("show") && window.bootstrap) {
+            bootstrap.Collapse.getOrCreateInstance(navCollapse, { toggle: false }).hide();
+          }
+        });
+      });
+
+      document.querySelectorAll(".spa-nav-inline").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          var id = el.getAttribute("data-spa");
+          if (!id) return;
+          e.preventDefault();
+          showSpa(id);
+        });
+      });
+
+      window.addEventListener("hashchange", function () {
+        showSpa(currentHashId());
+      });
+
+      showSpa(currentHashId());
+    })();
+  </script>
+</body>
+</html>
